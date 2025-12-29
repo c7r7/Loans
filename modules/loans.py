@@ -185,12 +185,12 @@ def save_pdf_handler(file_obj):
 def on_file_upload_change(file_obj):
     """
     Event handler for file upload change.
-    Enables Buttons if a file is present.
+    Enables Button if a file is present.
     """
     if file_obj is not None:
-        return gr.Button(interactive=True), gr.Button(interactive=True), "File uploaded. Ready to extract/save.", None
+        return gr.Button(interactive=True), "File uploaded. Ready to extract/save.", None
     else:
-        return gr.Button(interactive=False), gr.Button(interactive=False), "Please upload a PDF file.", None
+        return gr.Button(interactive=False), "Please upload a PDF file.", None
 
 # --- UI Builder ---
 
@@ -205,9 +205,8 @@ def create_tab():
             type="filepath"
         )
         
-        with gr.Row():
-            extract_btn = gr.Button("Extract Metadata", variant="primary", interactive=False)
-            save_btn = gr.Button("Save PDF", variant="secondary", interactive=False)
+        # Single button for both actions
+        process_btn = gr.Button("Extract Metadata & Save", variant="primary", interactive=False)
         
         status_output = gr.Textbox(
             label="Status",
@@ -225,19 +224,14 @@ def create_tab():
         pdf_uploader.change(
             fn=on_file_upload_change,
             inputs=[pdf_uploader],
-            outputs=[extract_btn, save_btn, status_output, json_output]
+            outputs=[process_btn, status_output, json_output]
         )
         
-        extract_btn.click(
-            fn=extract_metadata_handler,
-            inputs=[pdf_uploader],
-            outputs=[status_output, json_output]
-        )
-        
-        # We return the buttons and inputs so app.py can wire them to other tabs
+        # We return the components so app.py can wire the full chain (Extract -> Save)
         return {
             "ui": None, 
             "pdf_uploader": pdf_uploader,
-            "save_btn": save_btn,
+            "process_btn": process_btn,
+            "status_output": status_output,
             "json_output": json_output
         }

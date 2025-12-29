@@ -1,7 +1,7 @@
 [
   {
     "filename": "phoenix-facility-agreement-6-december-2022.pdf",
-    "filepath": "saved_pdfs/phoenix-facility-agreement-6-december-2022.pdf",
+    "filepath": "saved_pdfs\\phoenix-facility-agreement-6-december-2022.pdf",
     "borrower": "DIGNITY PLC",
     "lender": "PHOENIX UK FUND LTD",
     "amount": "50000000 GBP",
@@ -12,7 +12,7 @@
         "borrower": "DIGNITY PLC",
         "administrative_agent": null,
         "lenders": "PHOENIX UK FUND LTD",
-        "facility_type": "Term loan",
+        "facility_type": "Term loan facility",
         "loan_amount": 50000000,
         "currency": "GBP",
         "interest_type": null,
@@ -23,12 +23,18 @@
         },
         "fees": null,
         "maturity_or_termination_date": "2023-12-06",
-        "repayment_and_prepayment": null,
+        "repayment_and_prepayment": {
+          "repayment": null,
+          "prepayment": null
+        },
         "security_or_collateral": null,
         "guarantees": null,
         "financial_covenants": null,
         "non_financial_covenants": null,
-        "events_of_default": null,
+        "events_of_default": [
+          "Change of Control",
+          "Disruption Event"
+        ],
         "conditions_precedent": null,
         "governing_law": "England",
         "jurisdiction": null,
@@ -43,27 +49,28 @@
           "Available Commitment": "Lender's Commitment minus any outstanding Loans and any Loans due to be made on or before the proposed Utilisation Date",
           "Base Currency": "Sterling",
           "Business Day": "A day (other than a Saturday or Sunday) on which banks are open for general business in London",
-          "Change of Control": "More than 50% of the issued or allotted ordinary share capital or more than 50% of the voting rights of the Borrower is acquired by a new owner",
-          "Commitment": "\u00a350,000,000 unless cancelled, reduced or transferred",
-          "Confidential Information": "All information relating to the Company, the Group, this Agreement or the Facility",
-          "Default": "An Event of Default or any event that could become an Event of Default after certain conditions",
-          "Disruption Event": "A material disruption to payment or communications systems or financial markets required for the Facility, or a technical/systems-related disruption to a Party's treasury or payments operations",
+          "Change of Control": "An event where any person or persons acting in concert, other than a holding company whose shareholders are substantially similar to the pre-existing shareholders of the Borrower, becomes interested in more than 50% of the issued ordinary share capital or voting rights of the Borrower",
+          "Commitment": "\u00a350,000,000 to the extent not cancelled, reduced or transferred",
+          "Confidential Information": "All information relating to the Company, the Group, this Agreement or the Facility of which the Lender becomes aware in its capacity as, or for the purpose of becoming, the Lender",
+          "Confidentiality Undertaking": "A confidentiality undertaking substantially in a recommended form of the LMA or in any other form agreed between the Company and the Lender",
+          "Default": "An Event of Default or any event or circumstance which would be an Event of Default with the expiry of a grace period, the giving of notice, or the making of any determination under this Agreement",
+          "Disruption Event": "A material disruption to payment or communications systems or financial markets required for the Facility, or a technical or systems-related disruption to the treasury or payments operations of a Party",
           "Event of Default": "Any event or circumstance specified as such in Clause 14",
-          "Facility Office": "The office or offices through which the Lender will perform its obligations under this Agreement",
-          "Finance Lease": "Any lease or hire purchase contract that is treated as a balance sheet liability",
-          "Financial Indebtedness": "Indebtedness in various forms including moneys borrowed, bonds, debentures, Finance Leases, and receivables sold or discounted"
+          "Facility Office": "The office or offices notified by the Lender to the Borrower through which it will perform its obligations",
+          "Finance Lease": "Any lease or hire purchase contract which would be treated as a balance sheet liability according to Accounting Principles",
+          "Financial Indebtedness": "Indebtedness in various forms including moneys borrowed, acceptances, bonds, debentures, liabilities in respect of Finance Leases, receivables sold or discounted, and Treasury Transactions"
         }
       },
       "human_readable_highlights": {
-        "key_economics": "The loan amount is \u00a350,000,000 with a term of 12 months from the agreement date.",
-        "risks": "Potential disruptions in financial markets or payment systems could impact the Facility. A change of control involving more than 50% of the Borrower's share capital or voting rights could trigger an Event of Default.",
-        "unusual_features": "The definition of Financial Indebtedness includes a broad range of financial obligations, and the Facility includes specific provisions for disruptions affecting financial or operational capabilities."
+        "key_economics": "The loan amount is \u00a350,000,000 with a term of 12 months, available as a term loan facility.",
+        "risks": "Potential risks include events of default such as a change of control or disruption events that affect financial or payment systems.",
+        "unusual_features": "The definition of 'Change of Control' includes specific provisions regarding the composition of shareholders post-event, which is particularly tailored to protect the existing management structure."
       }
     }
   },
   {
     "filename": "Term Loan Facility Agreement.pdf",
-    "filepath": "saved_pdfs/Term Loan Facility Agreement.pdf",
+    "filepath": "saved_pdfs\\Term Loan Facility Agreement.pdf",
     "borrower": "AMD Fab 36 Limited Liability Company & Co. KG",
     "lender": [
       "ABN AMRO Bank N.V.",
@@ -104,6 +111,7 @@
         "repayment_and_prepayment": null,
         "security_or_collateral": [
           "Account Pledges",
+          "AMD Fab 36 Holding\u2019s Assignment of Receivables",
           "Assignments of Claims",
           "Assignment of Insurance Claims",
           "Assignment of Material German Contracts",
@@ -116,7 +124,7 @@
         "non_financial_covenants": null,
         "events_of_default": null,
         "conditions_precedent": null,
-        "governing_law": "Germany",
+        "governing_law": "German law",
         "jurisdiction": "Germany",
         "assignment_and_transferability": null
       },
@@ -131,61 +139,26 @@
             "description": "Second amendment to the original agreement."
           }
         ],
-        "security_details": {
-          "account_pledges": [
-            {
-              "entity": "the Borrower",
-              "date": "2004-04-20"
-            },
-            {
-              "entity": "AMD Fab 36 Holding GmbH",
-              "date": "2004-04-20"
-            },
-            {
-              "entity": "AMD Fab 36 Admin GmbH",
-              "date": "2004-04-20"
-            }
-          ],
-          "assignments_of_claims": [
-            {
-              "creditor": "AMD Inc.",
-              "date": "2004-04-20"
-            },
-            {
-              "creditor": "FoundryCo",
-              "date": "on or about the Amendment Date"
-            },
-            {
-              "creditor": "New German KG",
-              "date": "on or about the Amendment Date"
-            },
-            {
-              "creditor": "AMD Fab 36 Holding GmbH",
-              "date": "2004-04-20"
-            },
-            {
-              "creditor": "AMD Fab 36 Admin GmbH",
-              "date": "2004-04-20"
-            },
-            {
-              "creditor": "the General Partner",
-              "date": "2004-04-20"
-            },
-            {
-              "creditor": "LM Beteiligungsgesellschaft mbH",
-              "date": "2004-04-20"
-            }
-          ]
+        "agents": {
+          "facility_agent": "Dresdner Bank AG, Niederlassung Luxemburg",
+          "security_agent": "Dresdner Bank AG in Berlin",
+          "reporting_agent": "Dresdner Bank AG in Berlin"
         },
         "availability_period": {
-          "start_date": "Signing Date",
+          "start_date": "2004-04-21",
           "end_date": "2007-09-28"
+        },
+        "base_currency_amount": {
+          "description": "Amount specified in the Utilisation Request, adjusted for any repayment, prepayment, consolidation or division of such Loan."
+        },
+        "break_costs": {
+          "description": "Costs incurred by a Lender due to early repayment or prepayment of a loan."
         }
       },
       "human_readable_highlights": {
-        "key_economics": "The loan amount is EUR 700,000,000 with a maturity date of 2007-09-28. The facility type is a Term Loan.",
-        "risks": "Multiple amendments and complex security arrangements involving various entities and accounts could pose administrative and legal challenges.",
-        "unusual_features": "The agreement includes assignments of claims and pledges over multiple accounts and entities, indicating a highly secured transaction."
+        "key_economics": "The loan amount is EUR 700,000,000 with a term ending on September 28, 2007. The loan involves multiple high-profile banks as lenders and arrangers.",
+        "risks": "Complex security and collateral arrangements involving multiple entities and agreements, which could complicate enforcement in case of default.",
+        "unusual_features": "The agreement includes specific assignments of receivables and warranties, and detailed provisions for handling break costs."
       }
     }
   },
@@ -210,7 +183,7 @@
           "Skandinaviska Enskilda Banken AB (publ)",
           "BNP Paribas"
         ],
-        "facility_type": "Term Facility",
+        "facility_type": "Term Facility Agreement",
         "loan_amount": 4300000000,
         "currency": "GBP",
         "interest_type": null,
@@ -235,24 +208,22 @@
       "dynamic_deal_specific_extraction": {
         "definitions": {
           "Acceptable Bank": "A bank or financial institution with a rating for its long-term senior unsecured debt obligations of A- or higher by Standard & Poor's or Fitch Ratings Ltd or A3 or higher by Moody's or a comparable rating from an internationally recognised credit rating agency.",
-          "Acquisition": "The acquisition of up to 100% of the Target Shares by the Offeror pursuant to a Scheme and/or Offer and/or Squeeze-Out.",
-          "Acquisition Closing Date": "The Offer Unconditional Date or the Scheme Effective Date.",
-          "Acquisition Costs": [
-            "All fees, costs, commissions, expenses, and taxes incurred in connection with the Acquisition or the Facility.",
-            "All fees, costs, commissions, expenses, and taxes incurred by or on behalf of the Company and/or the Offeror in connection with the Offer or the Offer Documents.",
-            "All fees, costs, commissions, expenses, and taxes incurred by or on behalf of the Company and/or the Offeror in connection with the Scheme or the Scheme Documents."
-          ],
+          "Acceptance Condition": "A condition such that the Offer may not become or be declared unconditional until the Offeror has received acceptances in respect of a certain percentage or number of shares in Target.",
+          "Acquisition": "The acquisition of up to 100% of the Target Shares by the Offeror pursuant to a Scheme and/or Offer and/or Squeeze-Out in accordance with the terms of the relevant Acquisition Documents and together with any irrevocable, open market purchases and/or any contribution, right or transfer, or otherwise (or any combination thereof).",
+          "Acquisition Closing Date": "The Offer Unconditional Date or the Scheme Effective Date, as the case may be.",
+          "Acquisition Costs": "All fees, costs, commissions, expenses, and taxes incurred in connection with the Acquisition or the Facility, including amounts payable under or in connection with this Agreement or any Fee Letter.",
           "Acquisition Documents": "The Scheme Documents or, as the case may be, the Offer Documents and the Squeeze-Out Documents.",
           "Additional Business Day": "Any day specified as such in the Reference Rate Terms.",
-          "Affiliate": "A Subsidiary of the person, a Holding Company of the person, or any other Subsidiary of that Holding Company; in the case of any limited partnership, any entity which owns or controls or is owned or controlled by the first limited partnership or is under common ownership or control with the first limited partnership.",
-          "Agent's Spot Rate of Exchange": "The Agent's spot rate of exchange or any other publicly available spot rate of exchange selected by the Agent for the purchase of the relevant currency with the Base Currency in the Paris foreign exchange market at about 11:00 a.m on a particular day.",
-          "Announcement": "An Offer Announcement or a Scheme Announcement including any subsequent announcement and any amendment, replacement, revision, restatement, supplement or modification."
+          "Affiliate": "A Subsidiary of the person, a Holding Company of the person, or any other Subsidiary of that Holding Company and, in the case of any limited partnership, any entity which owns or controls or is owned or controlled by the first limited partnership or is under common ownership or control with the first limited partnership.",
+          "Agent's Spot Rate of Exchange": "The Agent's spot rate of exchange or any other publicly available spot rate of exchange selected by the Agent (acting reasonably) for the purchase of the relevant currency with the Base Currency in the Paris foreign exchange market at or about 11:00 a.m on a particular day.",
+          "Announcement": "An Offer Announcement or a Scheme Announcement (including any subsequent announcement and any amendment, replacement, revision, restatement, supplement or modification from time to time).",
+          "Approved Person": "Any bank, financial institution or other third party which is regularly engaged in or established for the purpose of making, purchasing, or investing in loans, securities, or other financial assets."
         }
       },
       "human_readable_highlights": {
-        "key_economics": "The loan amount is \u00a34,300,000,000 provided to CARLSBERG BREWERIES A/S by a consortium of banks including Danske Bank, Skandinaviska Enskilda Banken, and BNP Paribas.",
-        "risks": "Details on interest rates, repayment terms, and maturity date are not specified, which could impact financial planning and risk assessment.",
-        "unusual_features": "The loan supports an acquisition strategy, covering costs associated with the acquisition of up to 100% of the Target Shares, including various fees and taxes."
+        "key_economics": "The loan amount is \u00a34,300,000,000 provided to CARLSBERG BREWERIES A/S by a consortium of lenders including Danske Bank A/S, Skandinaviska Enskilda Banken AB (publ), and BNP Paribas.",
+        "risks": "The agreement includes complex definitions and conditions that could impact the execution of the loan, such as the Acquisition and its related costs, and the specific conditions under which the loan becomes unconditional.",
+        "unusual_features": "The loan involves detailed and specific conditions related to the Acquisition of shares, including various scenarios like Squeeze-Out and open market purchases, which are intricately tied to the loan's terms."
       }
     }
   },
