@@ -157,11 +157,14 @@ def create_tab():
         iframe_html = f"""
         <iframe
             src="data:application/pdf;base64,{b64_pdf}"
+            type="application/pdf"
             width="100%"
-            height="800px"
-            style="border:none;">
+            height="800"
+            style="border:none;"
+            loading="lazy">
         </iframe>
         """
+
 
         return (
             iframe_html,
