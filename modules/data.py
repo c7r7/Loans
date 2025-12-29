@@ -1,5 +1,6 @@
 import json
 import os
+import logging
 
 # File to persist data
 DB_FILE = "loan_database.json"
