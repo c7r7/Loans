@@ -1,54 +1,84 @@
 import gradio as gr
 import os
 import logging
-import base64
-from pypdf import PdfReader
+import fitz  # PyMuPDF
+from PIL import Image
 from openai import OpenAI
 
-# Global reference to API KEY
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# -------------------------------------------------
+# Logging config
+# -------------------------------------------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+)
 
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # ---------------------------
 # Helpers
 # ---------------------------
 
 def get_page_count(pdf_path):
+    logging.info(f"Getting page count for PDF: {pdf_path}")
     try:
-        reader = PdfReader(pdf_path)
-        return len(reader.pages)
-    except Exception:
+        doc = fitz.open(pdf_path)
+        return doc.page_count
+    except Exception as e:
+        logging.error(f"Failed to get page count for {pdf_path}: {e}")
         return 1
 
 
-def analyze_specific_page(pdf_path, page_num):
-    if not pdf_path or not os.path.exists(pdf_path):
-        return "No PDF", None
+def render_pdf_page_as_image(pdf_path, page_num):
+    """
+    Render a single PDF page as an image using PyMuPDF (NO poppler)
+    """
+    logging.info(f"Rendering PDF page | Path: {pdf_path} | Page: {page_num}")
 
     try:
-        reader = PdfReader(pdf_path)
-        total_pages = len(reader.pages)
+        doc = fitz.open(pdf_path)
+        page = doc.load_page(page_num - 1)
 
-        idx = int(page_num) - 1
-        if idx < 0 or idx >= total_pages:
-            return "Invalid Page Number", None
+        pix = page.get_pixmap(dpi=150)
+        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+        return img
 
-        page_text = reader.pages[idx].extract_text()
-        if not page_text:
-            return "No text found on this page (scanned image?)", None
+    except Exception as e:
+        logging.exception(
+            f"Failed to render page {page_num} for PDF {pdf_path}"
+        )
+        return None
+
+
+def analyze_specific_page(pdf_path, page_num):
+    logging.info(f"Analyzing page {page_num} | PDF path: {pdf_path}")
+
+    if not pdf_path or not os.path.exists(pdf_path):
+        logging.error(f"PDF path invalid or missing: {pdf_path}")
+        return "No PDF loaded", None
+
+    try:
+        doc = fitz.open(pdf_path)
+        page = doc.load_page(page_num - 1)
+        page_text = page.get_text()
+
+        if not page_text.strip():
+            logging.warning(f"No readable text on page {page_num}")
+            return "No readable text on this page.", None
 
         prompt = f"""
-You are a cute, intelligent anime financial assistant.
-The user is looking at Page {page_num} of a loan agreement.
-Here is the text of the page:
+You are a friendly, intelligent financial assistant.
+The user is reading page {page_num} of a loan agreement.
+
+PAGE TEXT:
 <<<
 {page_text[:4000]}
 >>>
 
-Your task:
-1. Identify the single most important "Insight" or "Risk" on this page.
-2. Explain it in a helpful, conversational, anime-style voice.
-3. Keep it short (2-3 sentences max).
+Task:
+1. Identify ONE key commercial risk or insight.
+2. Explain it in 2–3 concise sentences.
+3. Keep tone clear, professional, and helpful.
 """
 
         client = OpenAI(api_key=OPENAI_API_KEY)
@@ -56,7 +86,7 @@ Your task:
         response = client.chat.completions.create(
             model="gpt-4-turbo",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
+            temperature=0.6,
         )
 
         insight_text = response.choices[0].message.content
@@ -68,14 +98,18 @@ Your task:
         )
 
         os.makedirs("assets", exist_ok=True)
-        audio_path = f"assets/speech_page_{page_num}.mp3"
+        audio_path = f"assets/page_{page_num}.mp3"
         speech.stream_to_file(audio_path)
+
+        logging.info(f"Generated audio for page {page_num}: {audio_path}")
 
         return insight_text, audio_path
 
     except Exception as e:
-        logging.exception("Page analysis failed")
-        return f"Error analyzing page: {e}", None
+        logging.exception(
+            f"Analysis failed | PDF: {pdf_path} | Page: {page_num}"
+        )
+        return f"Error: {e}", None
 
 
 # ---------------------------
@@ -84,13 +118,13 @@ Your task:
 
 def create_tab():
     with gr.Row():
-        # ---------- LEFT: PDF VIEWER ----------
+        # -------- LEFT: PDF IMAGE VIEWER --------
         with gr.Column(scale=2):
             gr.Markdown("### 📄 Document Viewer")
 
-            pdf_display = gr.HTML(
-                value="<div style='color:gray'>No PDF loaded</div>",
-                label="PDF View",
+            pdf_image = gr.Image(
+                label="PDF Page",
+                height=800,
             )
 
             current_pdf_path = gr.State(value=None)
@@ -105,29 +139,42 @@ def create_tab():
                 )
                 analyze_btn = gr.Button("✨ Analyze Page", variant="primary")
 
-        # ---------- RIGHT: ASSISTANT ----------
+        # -------- RIGHT: AI ASSISTANT --------
         with gr.Column(scale=1):
             gr.Markdown("### 🤖 AI Loan Assistant")
 
             gr.Image(
                 value="assets/avatar.png",
                 show_label=False,
-                width=300,
+                width=280,
             )
 
             advisor_text = gr.Markdown(
-                "**Assistant:** *Upload a document and I’ll help analyze it page by page!*"
+                "**Assistant:** Upload a loan document to begin."
             )
 
             audio_player = gr.Audio(
                 label="Voice",
                 autoplay=True,
-                visible=True,
             )
 
     # ---------------------------
     # Events
     # ---------------------------
+
+    def on_page_change(pdf_path, page_num):
+        logging.info(
+            f"Page slider changed | Path: {pdf_path} | Page: {page_num}"
+        )
+        if not pdf_path:
+            return None
+        return render_pdf_page_as_image(pdf_path, page_num)
+
+    page_slider.change(
+        fn=on_page_change,
+        inputs=[current_pdf_path, page_slider],
+        outputs=pdf_image,
+    )
 
     analyze_btn.click(
         fn=analyze_specific_page,
@@ -136,35 +183,25 @@ def create_tab():
     )
 
     # ---------------------------
-    # Update function (called from app.py)
+    # Called from app.py
     # ---------------------------
 
     def update_pdf_state(path):
-        logging.info("Rendering inline PDF via base64: %s", path)
+        logging.info(f"Updating PDF state | Incoming path: {path}")
 
         if not path or not os.path.exists(path):
-            return (
-                "<div style='color:red'>PDF not found</div>",
-                None,
-                gr.Slider(value=1, minimum=1, maximum=1),
-            )
+            logging.error(f"PDF not found during update: {path}")
+            return None, None, gr.Slider(value=1, minimum=1, maximum=1)
 
         page_count = get_page_count(path)
+        first_page_img = render_pdf_page_as_image(path, 1)
 
-        with open(path, "rb") as f:
-            b64_pdf = base64.b64encode(f.read()).decode("utf-8")
-
-        iframe_html = f"""
-        <iframe
-            src="data:application/pdf;base64,{b64_pdf}"
-            width="100%"
-            height="800px"
-            style="border:none;">
-        </iframe>
-        """
+        logging.info(
+            f"PDF loaded successfully | Pages: {page_count} | Path: {path}"
+        )
 
         return (
-            iframe_html,
+            first_page_img,
             path,
             gr.Slider(
                 minimum=1,
@@ -176,7 +213,7 @@ def create_tab():
         )
 
     return {
-        "pdf_viewer": pdf_display,
+        "pdf_viewer": pdf_image,
         "current_pdf_path": current_pdf_path,
         "page_slider": page_slider,
         "update_fn": update_pdf_state,
