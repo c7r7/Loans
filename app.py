@@ -34,7 +34,6 @@ def main():
             with gr.Tab("PDF Viewer", id="tab_pdf"):
                 pdf_viewer_components = pdf_viewer.create_tab()
 
-        # ======================================================
         # SAVE & REGISTER FLOW
         # ======================================================
         def handle_save_and_register(file_obj, json_data):
@@ -43,7 +42,7 @@ def main():
                     "<div>No file</div>",
                     None,
                     gr.Slider(value=1, minimum=1, maximum=1),
-                    data.get_dataframe_data(""),
+                    tables.get_truncated_data(""),
                 )
 
             # Save PDF
@@ -57,7 +56,7 @@ def main():
             # 🔑 Inline PDF render (base64)
             iframe, path, slider = pdf_viewer_components["update_fn"](saved_path)
 
-            new_table_data = data.get_dataframe_data("")
+            new_table_data = tables.get_truncated_data("")
 
             return (
                 iframe,          # PDF viewer HTML
@@ -66,7 +65,16 @@ def main():
                 new_table_data,  # table refresh
             )
 
-        loans_components["save_btn"].click(
+        # Chain: Extract -> Success -> Save
+        # 1. User clicks Process Button -> Calls Extract
+        extract_event = loans_components["process_btn"].click(
+            fn=loans.extract_metadata_handler,
+            inputs=[loans_components["pdf_uploader"]],
+            outputs=[loans_components["status_output"], loans_components["json_output"]]
+        )
+        
+        # 2. On Success of Extract -> Calls Save & Register
+        extract_event.success(
             fn=handle_save_and_register,
             inputs=[
                 loans_components["pdf_uploader"],
@@ -79,6 +87,7 @@ def main():
                 tables_components["loan_table"],
             ],
         )
+
 
         # ======================================================
         # TABLE → PDF / JSON NAVIGATION
@@ -141,4 +150,4 @@ def main():
 
 if __name__ == "__main__":
     app = main()
-    app.launch(theme = gr.themes.Default(primary_hue="orange"))
+    app.launch()
