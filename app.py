@@ -41,7 +41,7 @@ def main():
                 return (
                     "<div>No file</div>",
                     None,
-                    gr.Slider(value=1, minimum=1, maximum=1),
+                    gr.Slider(value=1, minimum=1, maximum=2),
                     tables.get_truncated_data(""),
                 )
 

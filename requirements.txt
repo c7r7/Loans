@@ -2,3 +2,5 @@ gradio
 pypdf
 openai
 dotenv
+pymupdf
+pillow
