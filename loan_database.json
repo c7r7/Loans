@@ -193,5 +193,137 @@
         "unusual_features": "The agreement includes assignments of claims and pledges over multiple accounts and entities, indicating a highly secured transaction."
       }
     }
+  },
+  {
+    "filename": "facility-agreement.pdf",
+    "filepath": "saved_pdfs\\facility-agreement.pdf",
+    "borrower": "CARLSBERG BREWERIES A/S",
+    "lender": [
+      "Danske Bank A/S",
+      "Skandinaviska Enskilda Banken AB (publ)",
+      "BNP Paribas"
+    ],
+    "amount": "4300000000 GBP",
+    "interest": "N/A",
+    "maturity": "N/A",
+    "full_json": {
+      "core_loan_terms": {
+        "borrower": "CARLSBERG BREWERIES A/S",
+        "administrative_agent": "BNP Paribas",
+        "lenders": [
+          "Danske Bank A/S",
+          "Skandinaviska Enskilda Banken AB (publ)",
+          "BNP Paribas"
+        ],
+        "facility_type": "Term Facility",
+        "loan_amount": 4300000000,
+        "currency": "GBP",
+        "interest_type": null,
+        "benchmark_rate": null,
+        "margin": {
+          "min": null,
+          "max": null
+        },
+        "fees": null,
+        "maturity_or_termination_date": null,
+        "repayment_and_prepayment": null,
+        "security_or_collateral": null,
+        "guarantees": null,
+        "financial_covenants": null,
+        "non_financial_covenants": null,
+        "events_of_default": null,
+        "conditions_precedent": null,
+        "governing_law": null,
+        "jurisdiction": null,
+        "assignment_and_transferability": null
+      },
+      "dynamic_deal_specific_extraction": {
+        "definitions": {
+          "Acceptable Bank": "A bank or financial institution with a rating for its long-term senior unsecured debt obligations of A- or higher by Standard & Poor's or Fitch Ratings Ltd or A3 or higher by Moody's or a comparable rating from an internationally recognised credit rating agency.",
+          "Acquisition": "The acquisition of up to 100% of the Target Shares by the Offeror pursuant to a Scheme and/or Offer and/or Squeeze-Out.",
+          "Acquisition Closing Date": "The Offer Unconditional Date or the Scheme Effective Date.",
+          "Acquisition Costs": [
+            "All fees, costs, commissions, expenses, and taxes incurred in connection with the Acquisition or the Facility.",
+            "All fees, costs, commissions, expenses, and taxes incurred by or on behalf of the Company and/or the Offeror in connection with the Offer or the Offer Documents.",
+            "All fees, costs, commissions, expenses, and taxes incurred by or on behalf of the Company and/or the Offeror in connection with the Scheme or the Scheme Documents."
+          ],
+          "Acquisition Documents": "The Scheme Documents or, as the case may be, the Offer Documents and the Squeeze-Out Documents.",
+          "Additional Business Day": "Any day specified as such in the Reference Rate Terms.",
+          "Affiliate": "A Subsidiary of the person, a Holding Company of the person, or any other Subsidiary of that Holding Company; in the case of any limited partnership, any entity which owns or controls or is owned or controlled by the first limited partnership or is under common ownership or control with the first limited partnership.",
+          "Agent's Spot Rate of Exchange": "The Agent's spot rate of exchange or any other publicly available spot rate of exchange selected by the Agent for the purchase of the relevant currency with the Base Currency in the Paris foreign exchange market at about 11:00 a.m on a particular day.",
+          "Announcement": "An Offer Announcement or a Scheme Announcement including any subsequent announcement and any amendment, replacement, revision, restatement, supplement or modification."
+        }
+      },
+      "human_readable_highlights": {
+        "key_economics": "The loan amount is \u00a34,300,000,000 provided to CARLSBERG BREWERIES A/S by a consortium of banks including Danske Bank, Skandinaviska Enskilda Banken, and BNP Paribas.",
+        "risks": "Details on interest rates, repayment terms, and maturity date are not specified, which could impact financial planning and risk assessment.",
+        "unusual_features": "The loan supports an acquisition strategy, covering costs associated with the acquisition of up to 100% of the Target Shares, including various fees and taxes."
+      }
+    }
+  },
+  {
+    "filename": "IBM_10K112.pdf",
+    "filepath": "saved_pdfs\\IBM_10K112.pdf",
+    "borrower": "Basic Energy Services, Inc.",
+    "lender": "Each lender from time to time party hereto",
+    "amount": "180000000 USD",
+    "interest": "Fixed",
+    "maturity": "N/A",
+    "full_json": {
+      "core_loan_terms": {
+        "borrower": "Basic Energy Services, Inc.",
+        "administrative_agent": "U.S. Bank National Association",
+        "lenders": "Each lender from time to time party hereto",
+        "facility_type": "Term Loan",
+        "loan_amount": 180000000,
+        "currency": "USD",
+        "interest_type": "Fixed",
+        "benchmark_rate": null,
+        "margin": {
+          "min": null,
+          "max": null
+        },
+        "fees": "Various fees including those related to prepayment and administrative tasks.",
+        "maturity_or_termination_date": null,
+        "repayment_and_prepayment": {
+          "details": "Includes provisions for prepayments under certain conditions.",
+          "prepayment_fees": "Applicable under certain conditions."
+        },
+        "security_or_collateral": "Includes various collateral agreements as per the 'Collateral Documents'.",
+        "guarantees": null,
+        "financial_covenants": null,
+        "non_financial_covenants": null,
+        "events_of_default": "Standard and specific events listed which, upon occurrence, may trigger default.",
+        "conditions_precedent": {
+          "effective_date": "Various conditions must be met for the agreement to be effective.",
+          "borrowing_conditions": "Specific conditions outlined for initial and subsequent borrowings."
+        },
+        "governing_law": "Laws of the State of New York",
+        "jurisdiction": "State and federal courts located in New York",
+        "assignment_and_transferability": "Includes provisions for the assignment and transfer of interests under the agreement."
+      },
+      "dynamic_deal_specific_extraction": {
+        "loan_purpose": "To extend credit to the borrower in the form of Closing Date Term Loans and Delayed Draw Term Loans.",
+        "loan_amount_details": {
+          "closing_date_term_loans": 165000000,
+          "delayed_draw_term_loans": 15000000
+        },
+        "interest_details": {
+          "2022_senior_notes": "7-3/4% senior unsecured notes due 2022",
+          "2019_senior_notes": "7-3/4% senior unsecured notes due 2019"
+        },
+        "senior_notes_details": {
+          "2019_senior_notes_amount": 475000000,
+          "2022_senior_notes_amount": 300000000
+        },
+        "intercreditor_agreement_details": "Specifies the terms of priority in case of default between different lenders.",
+        "environmental_compliance_requirements": "Borrower must comply with environmental laws and possibly conduct environmental reports."
+      },
+      "human_readable_highlights": {
+        "key_economics": "The total loan amount is $180,000,000, divided into $165,000,000 for Closing Date Term Loans and $15,000,000 for Delayed Draw Term Loans.",
+        "risks": "Potential risks include default scenarios triggered by non-compliance with loan terms, environmental laws, or financial covenants.",
+        "unusual_features": "The agreement includes detailed provisions for the use of loan proceeds, environmental compliance, and intercreditor agreement specifics."
+      }
+    }
   }
 ]

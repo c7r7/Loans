@@ -1,6 +1,7 @@
 import gradio as gr
 from modules import data
 import difflib
+import json
 
 def compare_loans(file_a, file_b):
     """
@@ -21,8 +22,31 @@ def compare_loans(file_a, file_b):
     # 1. Text Diff (using the raw extracted text? We didn't save raw text in DB, only JSON)
     # Using JSON dump for diff is cleaner for structured data
     
-    json_str_a = str(entry_a.get("full_json", {}))
-    json_str_b = str(entry_b.get("full_json", {}))
+    json_a = entry_a.get("full_json", {})
+    json_b = entry_b.get("full_json", {})
+    
+    # Convert to formatted strings for diff
+    a_lines = json.dumps(json_a, indent=2, sort_keys=True).splitlines()
+    b_lines = json.dumps(json_b, indent=2, sort_keys=True).splitlines()
+    
+    # Generate HTML Diff
+    differ = difflib.HtmlDiff()
+    # We add some custom CSS to make it look nicer in the app
+    diff_html = differ.make_table(a_lines, b_lines, fromdesc=file_a, todesc=file_b, context=True, numlines=5)
+    
+    # Add styling with !important to override dark mode defaults
+    style = """
+    <style>
+    .diff { font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace !important; font-size: 13px !important; width: 100% !important; border-collapse: collapse !important; background: white !important; border: 1px solid #ddd !important; }
+    .diff td { padding: 4px 8px !important; border: 1px solid #eee !important; vertical-align: top !important; white-space: pre-wrap !important; word-break: break-word !important; color: #333 !important; background-color: white; }
+    .diff_header { background-color: #f8f9fa !important; color: #666 !important; font-weight: bold !important; text-align: right !important; width: 1% !important; border-right: 1px solid #ccc !important; }
+    .diff_next { display: none !important; }
+    .diff_add { background-color: #e6ffec !important; color: #24292e !important; }
+    .diff_chg { background-color: #fffbdd !important; color: #24292e !important; }
+    .diff_sub { background-color: #ffebe9 !important; color: #24292e !important; }
+    </style>
+    """
+    final_html = style + "<div style='overflow-x:auto; background-color: white !important; color: #333 !important; padding: 10px; border-radius: 4px;'>" + diff_html + "</div>"
     
     # Simple diff report
     report = f"### Comparison Report\n"
@@ -43,7 +67,7 @@ def compare_loans(file_a, file_b):
     else:
         report += "#### Key fields are identical."
         
-    return report, entry_a["full_json"], entry_b["full_json"]
+    return report, final_html
 
 
 def create_tab():
@@ -65,9 +89,8 @@ def create_tab():
         # Results
         comparison_report = gr.Markdown(label="Analysis")
         
-        with gr.Row():
-            json_a_view = gr.JSON(label="Document A Data")
-            json_b_view = gr.JSON(label="Document B Data")
+        gr.Markdown("#### Detailed JSON Diff")
+        diff_view = gr.HTML(label="Side-by-Side Comparison")
 
         # --- Logic ---
         
@@ -84,7 +107,7 @@ def create_tab():
         compare_btn.click(
             fn=compare_loans,
             inputs=[dropdown_a, dropdown_b],
-            outputs=[comparison_report, json_a_view, json_b_view]
+            outputs=[comparison_report, diff_view]
         )
         
         # Auto-refresh choices on load (doesn't always work perfectly in Gradio modular builds, manual refresh button provided)
