@@ -4,7 +4,9 @@ import json
 import re
 from pypdf import PdfReader
 from openai import OpenAI
-import shutil
+from dotenv import load_dotenv
+import shutil, logging
+load_dotenv()
 
 # --- Configuration ---
 # (Ideally this should be an env var, but keeping it here as per previous user edits)
@@ -109,7 +111,6 @@ OUTPUT
 Return ONE SINGLE JSON object.
 """
     prompt = prompt.replace("{DOCUMENT_TEXT}", text_chunk[:12000])
-
     # LLM Path (Primary)
     if OPENAI_API_KEY:
         try:
@@ -123,7 +124,7 @@ Return ONE SINGLE JSON object.
             extracted_json = response.choices[0].message.content
             return json.loads(extracted_json), "✅ Analysis complete (LLM – schema-free)."
         except Exception as e:
-            return {}, f"❌ LLM Error: {e}"
+            logging.info({}, f"❌ LLM Error: {e}")
 
     # Regex Fallback (Heuristic)
     fallback_data = {}

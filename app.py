@@ -1,6 +1,12 @@
 import gradio as gr
 from modules import loans, tables, comparison, pdf_viewer, data
 import os
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+)
 
 def main():
     # Use the default plain Gradio theme with orange accents
