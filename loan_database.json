@@ -12,7 +12,7 @@
         "borrower": "DIGNITY PLC",
         "administrative_agent": null,
         "lenders": "PHOENIX UK FUND LTD",
-        "facility_type": "Term loan facility",
+        "facility_type": "Term loan",
         "loan_amount": 50000000,
         "currency": "GBP",
         "interest_type": null,
@@ -23,46 +23,41 @@
         },
         "fees": null,
         "maturity_or_termination_date": "2023-12-06",
-        "repayment_and_prepayment": {
-          "details": "Specific terms not provided in the excerpt"
-        },
+        "repayment_and_prepayment": null,
         "security_or_collateral": null,
         "guarantees": null,
         "financial_covenants": null,
         "non_financial_covenants": null,
-        "events_of_default": "Specified in Clause 14",
-        "conditions_precedent": "Listed in Schedule 1",
+        "events_of_default": null,
+        "conditions_precedent": null,
         "governing_law": "England",
-        "jurisdiction": "England",
-        "assignment_and_transferability": {
-          "changes_to_lender": "Specified in Clause 15",
-          "changes_to_borrower": "Specified in Clause 16"
-        }
+        "jurisdiction": null,
+        "assignment_and_transferability": null
       },
       "dynamic_deal_specific_extraction": {
         "availability_period": "From the date of the agreement until 12 months after the agreement date",
         "definitions": {
-          "Accounting_Principles": "Generally accepted accounting principles in England, including IFRS",
+          "Accounting Principles": "Generally accepted accounting principles in England, including IFRS",
           "Affiliate": "A Subsidiary of the person or a Holding Company of that person or any other Subsidiary of that Holding Company",
           "Authorisation": "An authorisation, consent, approval, resolution, licence, exemption, filing, notarisation or registration",
-          "Available_Commitment": "Lender's Commitment minus outstanding Loans and Loans due to be made on or before the proposed Utilisation Date",
-          "Base_Currency": "Sterling",
-          "Business_Day": "A day (other than a Saturday or Sunday) on which banks are open for general business in London",
-          "Change_of_Control": "More than 50% of the issued or allotted ordinary share capital or voting rights of the Borrower is acquired by a new party",
-          "Commitment": "\u00a350,000,000",
-          "Confidential_Information": "Information related to the Company, the Group, this Agreement or the Facility, with specific exclusions",
-          "Default": "An Event of Default or any event that could become an Event of Default under specified conditions",
-          "Disruption_Event": "Material disruption to payment or communications systems or financial markets required for the Facility, or technical/systems-related disruptions",
-          "Event_of_Default": "Specified in Clause 14",
-          "Facility_Office": "Office notified by the Lender to the Borrower for performing obligations",
-          "Finance_Lease": "Lease or hire purchase contract treated as a balance sheet liability",
-          "Financial_Indebtedness": "Indebtedness in various forms including moneys borrowed, bonds, debentures, Finance Leases, receivables sold, and Treasury Transactions"
+          "Available Commitment": "Lender's Commitment minus any outstanding Loans and any Loans due to be made on or before the proposed Utilisation Date",
+          "Base Currency": "Sterling",
+          "Business Day": "A day (other than a Saturday or Sunday) on which banks are open for general business in London",
+          "Change of Control": "More than 50% of the issued or allotted ordinary share capital or more than 50% of the voting rights of the Borrower is acquired by a new owner",
+          "Commitment": "\u00a350,000,000 unless cancelled, reduced or transferred",
+          "Confidential Information": "All information relating to the Company, the Group, this Agreement or the Facility",
+          "Default": "An Event of Default or any event that could become an Event of Default after certain conditions",
+          "Disruption Event": "A material disruption to payment or communications systems or financial markets required for the Facility, or a technical/systems-related disruption to a Party's treasury or payments operations",
+          "Event of Default": "Any event or circumstance specified as such in Clause 14",
+          "Facility Office": "The office or offices through which the Lender will perform its obligations under this Agreement",
+          "Finance Lease": "Any lease or hire purchase contract that is treated as a balance sheet liability",
+          "Financial Indebtedness": "Indebtedness in various forms including moneys borrowed, bonds, debentures, Finance Leases, and receivables sold or discounted"
         }
       },
       "human_readable_highlights": {
         "key_economics": "The loan amount is \u00a350,000,000 with a term of 12 months from the agreement date.",
-        "risks": "Potential disruptions in financial markets or payment systems could impact the Facility. Change of control involving more than 50% of the Borrower's share capital or voting rights could trigger an Event of Default.",
-        "unusual_features": "The agreement includes specific provisions for confidentiality and handling of confidential information, with detailed definitions and scenarios outlined."
+        "risks": "Potential disruptions in financial markets or payment systems could impact the Facility. A change of control involving more than 50% of the Borrower's share capital or voting rights could trigger an Event of Default.",
+        "unusual_features": "The definition of Financial Indebtedness includes a broad range of financial obligations, and the Facility includes specific provisions for disruptions affecting financial or operational capabilities."
       }
     }
   },
