@@ -110,8 +110,8 @@ LoanIQ/
 │   ├── modules/            # Business logic modules
 │   │   ├── loans.py        # PDF extraction & data handling
 │   │   ├── pdf_viewer.py   # Page rendering & AI analysis
-│   │   ├── tables.py       # Data display logic
-│   │   └── ...
+│   │   ├── tables.py
+|   |   ├── comparision.py # Data display logic
 │   ├── assets/             # Generated audio files (mp3)
 │   └── saved_pdfs/         # Storage for uploaded documents
 └── README.md               # Project documentation
@@ -129,4 +129,4 @@ LoanIQ/
 This project is created for the **LMA EDGE Hackathon**.
 
 ---
-*Built with ❤️ by [Your Name/Team Name]*
+*Built with ❤️ by Attention Seekers*
