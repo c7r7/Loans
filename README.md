@@ -54,8 +54,8 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/LoanIQ.git
-cd LoanIQ
+git clone https://github.com/yourusername/Loans.git
+cd Loans
 ```
 
 ### 2. Setting up the Environment
