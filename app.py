@@ -150,5 +150,11 @@ def main():
 
 if __name__ == "__main__":
     app = main()
-    # app.launch()
-    app.launch(server_name="0.0.0.0", server_port=8080)
+
+    # Cloud Run requires listening on the PORT environment variable (default 8080)
+    port = int(os.environ.get("PORT", 8080))
+
+    app.launch(
+        server_name="0.0.0.0",
+        server_port=port
+    )
