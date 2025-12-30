@@ -1,7 +1,7 @@
 [
   {
     "filename": "phoenix-facility-agreement-6-december-2022.pdf",
-    "filepath": "saved_pdfs/phoenix-facility-agreement-6-december-2022.pdf",
+    "filepath": "saved_pdfs\\phoenix-facility-agreement-6-december-2022.pdf",
     "borrower": "DIGNITY PLC",
     "lender": "PHOENIX UK FUND LTD",
     "amount": "50000000 GBP",
@@ -24,7 +24,7 @@
         "fees": null,
         "maturity_or_termination_date": "2023-12-06",
         "repayment_and_prepayment": {
-          "details": "Specific clauses on repayment and prepayment are included but not detailed in the provided text."
+          "details": "Specific terms not detailed in the provided text"
         },
         "security_or_collateral": null,
         "guarantees": null,
@@ -43,29 +43,25 @@
         "availability_period": "From the date of the agreement until 12 months after the agreement date",
         "definitions": {
           "Accounting_Principles": "Generally accepted accounting principles in England, including IFRS",
-          "Affiliate": "Defined in relation to any person, a Subsidiary of that person or a Holding Company of that person or any other Subsidiary of that Holding Company",
+          "Affiliate": "A Subsidiary of the person or a Holding Company of that person or any other Subsidiary of that Holding Company",
           "Authorisation": "An authorisation, consent, approval, resolution, licence, exemption, filing, notarisation or registration",
           "Base_Currency": "Sterling",
           "Business_Day": "A day (other than a Saturday or Sunday) on which banks are open for general business in London",
-          "Change_of_Control": "Defined as an event where any person or persons acting in concert, other than a holding company with substantially similar shareholders, becomes interested in more than 50% of the issued ordinary share capital or voting rights of the Borrower",
+          "Change_of_Control": "More than 50% of the issued or allotted ordinary share capital or shares carrying more than 50% of the voting rights are acquired by a new holder",
           "Commitment": "\u00a350,000,000",
-          "Confidential_Information": "Defined extensively with exclusions",
-          "Default": "An Event of Default or any event that could become an Event of Default under specified conditions",
-          "Disruption_Event": "Defined as a material disruption to payment or communications systems or financial markets, or a technical/systems-related disruption to treasury or payments operations",
+          "Confidential_Information": "Information related to the Company, the Group, this Agreement or the Facility",
+          "Default": "An Event of Default or any event that could become an Event of Default with certain conditions",
+          "Disruption_Event": "A material disruption to payment or communications systems or financial markets required for the Facility",
           "Event_of_Default": "Specified in Clause 14",
-          "Facility": "The term loan facility made available under this agreement",
-          "Finance_Lease": "Defined in relation to balance sheet liability",
-          "Financial_Indebtedness": "Defined to include various forms of indebtedness"
-        },
-        "confidentiality": {
-          "clause": "Clause 26",
-          "undertaking_form": "LMA recommended form or other form agreed between the Company and the Lender"
+          "Facility_Office": "The office notified by the Lender to the Borrower for performing obligations under this Agreement",
+          "Finance_Lease": "A lease or hire purchase contract considered as a balance sheet liability",
+          "Financial_Indebtedness": "Indebtedness in various forms including moneys borrowed, financial instruments, and liabilities under finance leases"
         }
       },
       "human_readable_highlights": {
         "key_economics": "The loan amount is \u00a350,000,000 with a term of 12 months from the agreement date.",
-        "risks": "Potential disruptions in financial or communication systems could impact payments or other transactions. A change of control involving more than 50% of the Borrower's voting rights or share capital could trigger an Event of Default.",
-        "unusual_features": "The detailed definitions and conditions for Events of Default and Disruption Events highlight specific scenarios that could affect the loan's stability and repayment."
+        "risks": "Potential disruptions in financial markets or payment systems could affect the operations under this agreement.",
+        "unusual_features": "The definition of 'Change of Control' includes specific provisions regarding the ownership and voting rights."
       }
     }
   },
