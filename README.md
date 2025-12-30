@@ -39,7 +39,7 @@
 - **Frontend/UI:** [Gradio](https://gradio.app/) - For a responsive, accessible, and beautiful web interface (Custom "Orange" Theme).
 - **Backend Logic:** Python.
 - **AI & ML:**
-  - **OpenAI API:** GPT-4 Turbo / GPT-5 (Preview) for text analysis.
+  - **OpenAI API:** GPT-5 (Preview) for text analysis.
   - **OpenAI TTS:** For high-fidelity audio generation.
   - **PyMuPDF (Fitz):** For robust PDF text and layout extraction.
 - **Containerization:** Docker.
@@ -50,7 +50,7 @@
 
 ### Prerequisites
 - Python 3.9 or higher.
-- An **OpenAI API Key** with access to GPT-4 models.
+- An **OpenAI API Key** with access to GPT-5 models.
 
 ### 1. Clone the Repository
 ```bash
