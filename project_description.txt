@@ -1,0 +1,21 @@
+LoanIQ Project Description
+
+1. Features
+- Automated Metadata Extraction: Automatically ingests PDF loan agreements and extracts key data (Borrower, Margins, Covenants, Governing Law) into structured JSON using a hybrid AI/regex engine.
+- Interactive "AI Analyst" Dashboard: A centralized glassmorphic interface where users can view documents and extracted data side-by-side.
+- Audio Briefings: Converts dense legal text into audio summaries using OpenAI's Text-to-Speech, allowing users to listen to deal terms.
+- One-Click PowerPoint Generation: Programmatically creates professional slide decks summarizing key risk factors and loan details for executive presentations.
+- Portfolio Management: Stores extracted data in a lightweight JSON database for future retrieval and comparison.
+
+2. Target Users
+- Investment Bankers & Credit Analysts: Who need to quickly review and "spread" financial values from credit agreements.
+- Legal Professionals: Who need to scan hundreds of pages for specific clauses or non-standard terms.
+- Loan Administrators: Who manage large portfolios and need quick access to structured data like maturity dates and interest margins.
+
+3. Technology Used
+- Frontend/UI: Gradio (Python-based web framework) with custom CSS for a premium "glassmorphic" design.
+- AI & NLP: OpenAI API (GPT-4) for semantic analysis and extraction; OpenAI TTS (Text-to-Speech) for audio generation.
+- Document Processing: PyMuPDF for high-fidelity text and layout extraction from PDFs.
+- Presentation Generation: python-pptx for dynamic creation of PowerPoint slides.
+- Backend Logic: Python with Regex fallbacks for precision data extraction.
+- Database: Local JSON storage for lightweight, portable data persistence.
